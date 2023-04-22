@@ -1,0 +1,15 @@
+{
+  "username":"",
+  "challenges":{
+    "lastChallengeCompleted":"",
+    "challengesCompleted":[],
+    "challengesUnlocked":[],
+    "currentChallenge":"", 
+    "currentChallengeSection":""
+  },
+  "achievements":{
+    "achievementsCompleted":{},
+    "achievementsUnlocked":{}
+  },
+  "editorPreference":""
+}
