@@ -1,16 +1,16 @@
 {
-  "username":"",
-  "newUser":true,
-  "challenges":{
-    "lastChallengeCompleted":"",
-    "challengesCompleted":[],
-    "challengesUnlocked":[],
-    "currentChallenge":"", 
-    "currentChallengeSection":""
+  "username": "Buddy",
+  "newUser": false,
+  "challenges": {
+    "lastChallengeCompleted": "",
+    "challengesCompleted": [],
+    "challengesUnlocked": [],
+    "currentChallenge": "",
+    "currentChallengeSection": ""
   },
-  "achievements":{
-    "achievementsCompleted":{},
-    "achievementsUnlocked":{}
+  "achievements": {
+    "achievementsCompleted": {},
+    "achievementsUnlocked": {}
   },
-  "editorPreference":""
+  "editorPreference": ""
 }

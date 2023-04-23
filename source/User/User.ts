@@ -3,11 +3,19 @@ import path from 'path';
 
 const REL_PATH = '/source/User/user.json';
 
-// TODO: Create function for setting user data
+function getFilePath(): string {
+  const currentDir = process.cwd();
+  return path.join(currentDir, REL_PATH);
+}
+
+export function saveUserData(data: object): void {
+  const filePath = getFilePath();
+  const jsonString = JSON.stringify(data, null, 2);
+  fs.writeFileSync(filePath, jsonString, 'utf-8');
+}
 
 export function getUserdata(): any {
-  const currentDir = process.cwd();
-  const filePath = path.join(currentDir, REL_PATH);
+  const filePath = getFilePath();
 
   const fileContents = fs.readFileSync(filePath, 'utf-8');
   return JSON.parse(fileContents);

@@ -7,10 +7,9 @@ interface ObjectDisplayProps {
 }
 
 /**
- * Displays an object in a tree-like structure
- * Mostly used for debugging
+ * Displays an objects even if it has nested objects, and tries to indent them for easier reading
+ * Used for debugging
  */
-
 const ObjectDisplay: React.FC<ObjectDisplayProps> = ({ data, indentation = 0 }) => {
   return (
     <Box flexDirection="column">

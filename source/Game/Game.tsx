@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Text, Box} from 'ink';
 import BigText from 'ink-big-text';
 
-import { getUserdata } from '../User/User.js';
-// import ObjectDisplay from '../ComponentLibrary/ObjectDisplay.js'; 
+import { getUserdata, saveUserData } from '../User/User.js';
+import ObjectDisplay from '../ComponentLibrary/ObjectDisplay.js'; 
 import { InputPrompt } from '../ComponentLibrary/InputPrompt.js';
 
 interface GameProps {
@@ -39,14 +39,30 @@ interface UpdateUserDataParams {
  * @returns void
  */
 function updateUserData(newData: UpdateUserDataParams, setUserData: React.Dispatch<React.SetStateAction<UserData>>) {
-  setUserData(prevData => ({
-    ...prevData,
-    [newData.key]: newData.value
-  }));
+  // We only change username if it's a new user, so also set newUser to false
+  if (newData.key === 'username') {
+    setUserData(prevData => ({
+      ...prevData,
+      'newUser': false,
+      'username': newData.value as string
+    }));
+  } else {
+    // Otherwise, just update this particular key/value pair
+    setUserData(prevData => ({
+      ...prevData,
+      [newData.key]: newData.value
+    }));
+  }
 }
 
 export default function Game({storyPlaythrough}: GameProps) { 
   const [userData, setUserData] = useState<UserData>(getUserdata());
+  // const [prompt, setPrompt] = useState<string>('');
+
+  useEffect(() => {
+    // This will be called whenever userData changes
+    saveUserData(userData);
+  }, [userData]);
 
   // If user chose to skip the story, go straight to the challenges
   if (!storyPlaythrough) {
@@ -58,8 +74,6 @@ export default function Game({storyPlaythrough}: GameProps) {
     );
   }
   
-  // get name and save to userData
-  // set userData.newUser to false
   // unlock first challenge
   // set userData.challenges.currentChallenge to first challenge
   // set userData.challenges.currentChallengeSection to first challenge section
@@ -68,13 +82,22 @@ export default function Game({storyPlaythrough}: GameProps) {
   if (userData.newUser) {
    return(
     <>
-     <BigText text={userData.username} colors={['#ff2500', 'gray']} font='3d' align='center'/>
-     <InputPrompt prompt="What is your name?" updateFunc={updateUserData} updateKey='username' setter={setUserData} /> 
+      {/* {setPrompt('What is your name?')} */}
+
+      {/* {userData.username ? <BigText text={userData.username} colors={['#ff2500', 'gray']} font='3d' align='center'/> : ''} */}
+      <InputPrompt prompt="What is your name?" updateFunc={updateUserData} updateKey='username' setter={setUserData} userData={userData}/> 
     </>
   );
   } else {
     return (
-      <BigText text='Welcome back!' colors={['#ff2500', 'gray']} font='3d' align='center'/>
+      <>
+        <BigText text='welcome to' font='simple3d' align='center' colors={['white', 'white']} backgroundColor='transparent'/>
+		    <Box borderStyle="round" flexDirection="column">
+			    <BigText text="Code" colors={['#ff2500', 'gray']} font='3d' align='center'/>
+			    <BigText text="Rebellion" colors={['#ff2500', 'gray']} font='3d' align='center'/>
+		    </Box>
+        <ObjectDisplay data={userData} />
+      </>
     );
   }
 }
