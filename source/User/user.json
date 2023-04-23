@@ -1,5 +1,6 @@
 {
   "username":"",
+  "newUser":true,
   "challenges":{
     "lastChallengeCompleted":"",
     "challengesCompleted":[],

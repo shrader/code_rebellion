@@ -15,9 +15,6 @@ import App from './app.js';
 		-save (saves progress for current user)
 		--load user name  
 
-	Examples
-	  $ code_rebellion --name=Jane
-	  Hello, Jane
  */
 
 const cli = meow(
@@ -26,20 +23,21 @@ const cli = meow(
 	  $ code_rebellion
 
 	Options
-		--name  Your name
+		--no-story	Skips the story and goes straight to the challenges
 
 	Examples
-	  $ code_rebellion --name=Jane
-	  Hello, Jane
+	  $ code_rebellion --no-story
+	  Select a challenge:
 `,
 	{
 		importMeta: import.meta,
 		flags: {
-			name: {
-				type: 'string',
+			story: {
+				type: 'boolean',
+				default: true,
 			},
 		},
 	},
 );
 
-render(<App name={cli.flags.name} />);
+render(<App flags={cli.flags} />);

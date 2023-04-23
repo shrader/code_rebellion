@@ -17,9 +17,12 @@ $ code_rebellion --help
     $ code_rebellion
 
   Options
-    --name  Your name
+    --no-story
 
   Examples
-    $ code_rebellion --name=Jane
-    Hello, Jane
+    $ code_rebellion 
+    Welcome to the Code Rebellion
+
+     $ code_rebellion --no-story
+     Select a challenge:
 ```
