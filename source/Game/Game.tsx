@@ -10,7 +10,7 @@ interface GameProps {
   storyPlaythrough: boolean;
 }
 
-interface UserData {
+export interface UserData {
   username:string;
   newUser:boolean;
   challenges:{
@@ -27,7 +27,7 @@ interface UserData {
   editorPreference:string;
 }
 
-interface UpdateUserDataParams {
+export interface UpdateUserDataParams {
   key: keyof UserData;
   value: UserData[keyof UserData];
 }
@@ -85,7 +85,7 @@ export default function Game({storyPlaythrough}: GameProps) {
       {/* {setPrompt('What is your name?')} */}
 
       {/* {userData.username ? <BigText text={userData.username} colors={['#ff2500', 'gray']} font='3d' align='center'/> : ''} */}
-      <InputPrompt prompt="What is your name?" updateFunc={updateUserData} updateKey='username' setter={setUserData} userData={userData}/> 
+      <InputPrompt prompt="What is your name?" updateFunc={updateUserData} updateKey='username' setter={setUserData} /> 
     </>
   );
   } else {
