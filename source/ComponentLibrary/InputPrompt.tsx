@@ -13,7 +13,7 @@ export const InputPrompt = ({prompt, updateFunc, updateKey, setter}: {
   const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = () => {
-    // save input value to state setter in component that called InputPrompt
+    // save input value to state setter 
     updateFunc({key: updateKey, value: inputValue}, setter);
     // clear input value
     setInputValue('');

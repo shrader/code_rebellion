@@ -1,10 +1,10 @@
 {
-  "username": "Buddy",
+  "username": "Player",
   "newUser": false,
   "challenges": {
     "lastChallengeCompleted": "",
     "challengesCompleted": [],
-    "challengesUnlocked": [],
+    "challengesUnlocked": [], // default this to include the first challenge
     "currentChallenge": "",
     "currentChallengeSection": ""
   },

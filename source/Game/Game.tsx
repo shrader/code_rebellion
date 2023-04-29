@@ -74,20 +74,14 @@ export default function Game({storyPlaythrough}: GameProps) {
     );
   }
   
-  // unlock first challenge
+  // unlock first challenge ... now I think I want this to be unlocked by defualt
   // set userData.challenges.currentChallenge to first challenge
   // set userData.challenges.currentChallengeSection to first challenge section
   // load first challenge section
-  // TODO: InputPrompt leaves the prompt open after submitting, need to figure out how to close it
   if (userData.newUser) {
-   return(
-    <>
-      {/* {setPrompt('What is your name?')} */}
-
-      {/* {userData.username ? <BigText text={userData.username} colors={['#ff2500', 'gray']} font='3d' align='center'/> : ''} */}
+    return(
       <InputPrompt prompt="What is your name?" updateFunc={updateUserData} updateKey='username' setter={setUserData} /> 
-    </>
-  );
+    );
   } else {
     return (
       <>
